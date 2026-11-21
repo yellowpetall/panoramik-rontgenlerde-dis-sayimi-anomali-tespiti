@@ -61,6 +61,7 @@ wheels/
 # ==========================================
 # 5. Sanal Ortamlar (Virtual Environments) & Gizli Anahtarlar
 # ==========================================
+yolo_env/
 .env
 .venv
 env/
