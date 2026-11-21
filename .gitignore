@@ -63,7 +63,11 @@ wheels/
 # ==========================================
 # 5. Sanal Ortamlar (Virtual Environments) & Gizli Anahtarlar
 # ==========================================
+# Tüm alt klasörlerdeki sanal ortamları yakala
+**/yolo_env/
+**/*_env/
 yolo_env/
+*_env/
 .env
 .venv
 env/
