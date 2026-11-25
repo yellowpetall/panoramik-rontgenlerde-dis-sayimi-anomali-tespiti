@@ -1,3 +1,4 @@
+import numpy as np
 import json
 import cv2
 import matplotlib.pyplot as plt
@@ -5,7 +6,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 # 1. Dosya yollarını tanımla
-disease_dir = Path("../training_data/quadrant-enumeration-disease").resolve()
+disease_dir = Path(__file__).resolve().parents[1] / "training_data" / "quadrant-enumeration-disease"
 json_path = disease_dir / "train_quadrant_enumeration_disease.json"
 xrays_dir = disease_dir / "xrays"
 
@@ -63,7 +64,8 @@ colors = {
 for idx, img_id in enumerate(sample_img_ids):
     img_info = all_images[img_id]
     img_path = xrays_dir / img_info["file_name"]
-    img = cv2.imread(str(img_path))
+    img_bytes = np.fromfile(str(xrays_dir / img_info["file_name"]), dtype=np.uint8)
+    img = cv2.imdecode(img_bytes, cv2.IMREAD_COLOR)
 
     for ann in anns_by_img[img_id]:
         x, y, w, h = map(int, ann["bbox"])
